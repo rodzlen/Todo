@@ -1,3 +1,19 @@
+import json
+import os # 파이썬을 이용해 시스테 내부 접근 가능
+
+TASK_FILE = 'tasks.json'
+
+def save_task(tasks): # 파일을 저장하는 기능
+    with open(TASK_FILE, "a", encoding='utf-8') as file:
+        json.dump(tasks, file, indent=4, ensure_ascii = False) # json 형식으로 파일 저장 indent는 파이썬 문법에 맞게 4칸으로 지정
+
+def load_tasks():
+    if os.path.exists(TASK_FILE):
+        with open(TASK_FILE, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    return []
+        
+
 def show_menu():
     print("작업 관리 애플리케이션")
     print("1. 할일 목록")
@@ -10,8 +26,13 @@ def show_menu():
 def view_task():
     pass
 
-def add_task(task):
-    task_list[len(task_list+1)] = task
+
+def add_task(task_name):
+    tasks = load_tasks()
+    tasks =[]
+    task = {"name":task_name, "완료 여부": False}
+    tasks.append(task)
+    save_task(tasks)
     
 def complete_task(task_no):
     pass
