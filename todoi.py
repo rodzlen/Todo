@@ -4,7 +4,7 @@ import os # 파이썬을 이용해 시스테 내부 접근 가능
 TASK_FILE = 'tasks.json'
 
 def save_task(tasks): # 파일을 저장하는 기능
-    with open(TASK_FILE, "a", encoding='utf-8') as file:
+    with open(TASK_FILE, "w", encoding='utf-8') as file:
         json.dump(tasks, file, indent=4, ensure_ascii = False) # json 형식으로 파일 저장 indent는 파이썬 문법에 맞게 4칸으로 지정
 
 def load_tasks():
