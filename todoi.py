@@ -24,7 +24,15 @@ def show_menu():
     print("6. 종료")
 
 def view_task():
-    pass
+    tasks = load_tasks()
+    if not tasks:
+        print("현재 등록된 작업이 없습니다.")
+    else :
+        print("작업목록: ")
+        for i, task in enumerate(tasks, start=1):
+            status = "완료" if task['completed'] else "미완료"
+            print(f'{i}. 내용: {task['name']} - {status}')
+
 
 
 def add_task(task_name):
@@ -45,7 +53,7 @@ def delete_task(task_no):
 def main():
     while True:
         show_menu()
-        choice = input("원하는 메뉴를 선택하세요".split(' '))
+        choice = input("원하는 메뉴를 선택하세요")
         if choice == "1" or choice =="할일목록":
             view_task()
         elif choice == "2" or choice =="할일추가":
