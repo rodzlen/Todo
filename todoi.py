@@ -23,19 +23,35 @@ def show_menu():
     print("5. 할일 삭제")
     print("6. 종료")
 
-def view_task():
-    pass
+def view_task():# 할 일 목록보기, merge 진행
+    tasks = load_tasks()
+    if not tasks:
+        print("현재 등록된 작업이 없습니다.")
+    else :
+        print("작업목록: ")
+        for i, task in enumerate(tasks, start=1):
+            status = "완료" if task['completed'] else "미완료"
+            print(f'{i}. 내용: {task['name']} - {status}')
+
 
 
 def add_task(task_name):
     tasks = load_tasks()
     tasks =[]
-    task = {"name":task_name, "완료 여부": False}
+    task = {"name":task_name, "completed": False}
     tasks.append(task)
     save_task(tasks)
     
 def complete_task(task_no):
-    pass
+    tasks = load_tasks()
+    if 1 <= task_no <=len(tasks):
+        tasks[task_no -1 ]["completed"] == True
+        save_task(tasks)
+        print(f"할 일: {tasks[task_no -1]["name"]}이 완료 처리되었습니다.")
+            
+    else:
+        print("유효하지 않은 번호 입니다. 제대로 입력하세요")
+
 
 def fix_task(task_no, fix_task):
     pass
@@ -45,7 +61,7 @@ def delete_task(task_no):
 def main():
     while True:
         show_menu()
-        choice = input("원하는 메뉴를 선택하세요".split(' '))
+        choice = input("원하는 메뉴를 선택하세요")
         if choice == "1" or choice =="할일목록":
             view_task()
         elif choice == "2" or choice =="할일추가":
