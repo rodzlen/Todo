@@ -23,7 +23,7 @@ def show_menu():
     print("5. 할일 삭제")
     print("6. 종료")
 
-def view_task():
+def view_task():# 할 일 목록보기, merge 진행
     tasks = load_tasks()
     if not tasks:
         print("현재 등록된 작업이 없습니다.")
