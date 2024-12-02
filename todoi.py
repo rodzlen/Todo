@@ -38,7 +38,7 @@ def view_task():# 할 일 목록보기, merge 진행
 def add_task(task_name):
     tasks = load_tasks()
     tasks =[]
-    task = {"name":task_name, "완료 여부": False}
+    task = {"name":task_name, "completed": False}
     tasks.append(task)
     save_task(tasks)
     
