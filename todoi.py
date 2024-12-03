@@ -56,7 +56,16 @@ def complete_task(task_no):
 def fix_task(task_no, fix_task):
     pass
 def delete_task(task_no):
-    pass
+    try:
+        tasks = load_tasks()
+        if 1<= task_no >= len(tasks):
+            delete_tsk = tasks.pop(task_no -1)
+            save_task(tasks)
+            print(f"할 일: {delete_tsk['name']}이(가) 삭제되었습니다.")
+        else:
+            print("유효한 값을 입력해 주세요")
+    except IndexError as e:
+        print("리스트에 해당 항목이 없습니다.")
 
 def main():
     while True:
