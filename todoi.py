@@ -19,9 +19,8 @@ def show_menu():
     print("1. 할일 목록")
     print("2. 할일 추가")
     print("3. 할일 완료")
-    print("4. 할일 수정")
-    print("5. 할일 삭제")
-    print("6. 종료")
+    print("4. 할일 삭제")
+    print("5. 종료")
 
 def view_task():# 할 일 목록보기, merge 진행
     tasks = load_tasks()
@@ -52,7 +51,7 @@ def complete_task(task_no):
     else:
         print("유효하지 않은 번호 입니다. 제대로 입력하세요")
 
-
+# 미구현
 def fix_task(task_no, fix_task):
     pass
 def delete_task(task_no):
@@ -79,13 +78,10 @@ def main():
         elif choice == "3" or choice == "할일완료":
             task_num = int(input("완료 처리 할 번호를 입력해 주세요"))
             complete_task(task_num)
-        elif choice == "4" or choice =="할일수정":
-            task_num = int(input("수정할 번호를 입력해 주세요"))
-            fix_task(task_num)
-        elif choice == "5" or choice =="할일삭제":
+        elif choice == "4" or choice =="할일삭제":
             task_num = int(input("삭제할 번호를 입력해 주세요"))
             delete_task(task_num)
-        elif choice == "6" or choice =="종료":
+        elif choice == "5" or choice =="종료":
             print("System을 종료합니다.")
             break
         else:
