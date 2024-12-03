@@ -4,7 +4,7 @@ import os # 파이썬을 이용해 시스테 내부 접근 가능
 TASK_FILE = 'tasks.json'
 
 def save_task(tasks): # 파일을 저장하는 기능
-    with open(TASK_FILE, "a", encoding='utf-8') as file:
+    with open(TASK_FILE, "w", encoding='utf-8') as file:
         json.dump(tasks, file, indent=4, ensure_ascii = False) # json 형식으로 파일 저장 indent는 파이썬 문법에 맞게 4칸으로 지정
 
 def load_tasks():
@@ -40,7 +40,16 @@ def complete_task(task_no):
 def fix_task(task_no, fix_task):
     pass
 def delete_task(task_no):
-    pass
+    try:
+        tasks = load_tasks()
+        if 1<= task_no >= len(tasks):
+            delete_tsk = tasks.pop(task_no -1)
+            save_task(tasks)
+            print(f"할 일: {delete_tsk['name']}이(가) 삭제되었습니다.")
+        else:
+            print("유효한 값을 입력해 주세요")
+    except IndexError as e:
+        print("리스트에 해당 항목이 없습니다.")
 
 def main():
     while True:
