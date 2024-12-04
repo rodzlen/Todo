@@ -66,6 +66,7 @@ python task_manager.py
 3. 작업을 완료 처리하거나 삭제합니다.  
 4. 프로그램 종료 후에도 작업 데이터는 저장됩니다.  
 
+![todo](https://github.com/user-attachments/assets/969f69e4-1dab-4020-ba0e-3be2d38c7cbc)
 ---
 
 ## 🔧 기술 스택  
