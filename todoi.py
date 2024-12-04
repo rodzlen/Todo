@@ -30,13 +30,12 @@ def view_task():# 할 일 목록보기, merge 진행
         print("작업목록: ")
         for i, task in enumerate(tasks, start=1):
             status = "완료" if task['completed'] else "미완료"
-            print(f'{i}. 내용: {task['name']} - {status}')
+            print(f"{i}. 내용: {task['name']} - {status}")
 
 
 
 def add_task(task_name):
     tasks = load_tasks()
-    tasks =[]
     task = {"name":task_name, "completed": False}
     tasks.append(task)
     save_task(tasks)
@@ -44,20 +43,20 @@ def add_task(task_name):
 def complete_task(task_no):
     tasks = load_tasks()
     if 1 <= task_no <=len(tasks):
-        tasks[task_no -1 ]["completed"] == True
+        tasks[task_no -1 ]["completed"] = True
         save_task(tasks)
-        print(f"할 일: {tasks[task_no -1]["name"]}이 완료 처리되었습니다.")
+        print(f"할 일: {tasks[task_no -1]['name']}이(가) 완료 처리되었습니다.")
             
     else:
         print("유효하지 않은 번호 입니다. 제대로 입력하세요")
 
-# 미구현
-def fix_task(task_no, fix_task):
-    pass
+# # 미구현
+# def fix_task(task_no, fix_task):
+#     pass
 def delete_task(task_no):
     try:
         tasks = load_tasks()
-        if 1<= task_no >= len(tasks):
+        if 0< task_no <= len(tasks):
             delete_tsk = tasks.pop(task_no -1)
             save_task(tasks)
             print(f"할 일: {delete_tsk['name']}이(가) 삭제되었습니다.")
